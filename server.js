@@ -7,10 +7,12 @@ const Food = require("./models/FoodModel");
 const User = require("./models/UserModel");
 const Order = require("./models/OrderModel");
 const Address = require("./models/AddressModel");
+const schema = require("./graphql/index.resolver")
+
 
 const app = express();
 
-// app.use("/graphql", createHandler({ schema, context: (req) => ({ req }) }));
+app.use("/graphql", createHandler({ schema, context: (req) => ({ req }) }));
 
 // try to connect to DB
 try {
@@ -22,6 +24,7 @@ try {
 } catch (error) {
   console.log("faild to conect", error);
 }
+
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {

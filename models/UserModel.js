@@ -12,12 +12,6 @@ const User = sqlConnection.define(
         len: [3, 50],
       },
     },
-    username: {
-      type: DataTypes.STRING,
-      validate: {
-        len: [3, 40],
-      },
-    },
     phonenumber: {
       type: DataTypes.STRING,
       validate: {
