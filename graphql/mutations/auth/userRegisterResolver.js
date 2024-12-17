@@ -3,6 +3,7 @@ const AuthType = require("../../types/AuthType");
 const UserModel = require("../../../models/UserModel");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const registerUserValidate = require("../../../utils/validators/LRvaidator");
 
 const userRegisterResolverMutation = {
   type: AuthType,
@@ -12,6 +13,11 @@ const userRegisterResolverMutation = {
     phonenumber: { type: new GraphQLNonNull(GraphQLString) },
   },
   resolve: async (_, args) => {
+    const argsValatetion = registerUserValidate(args);
+    if (argsValatetion[0]) {
+      throw new Error(argsValatetion[0].message);
+    };
+
     const { username, password, phonenumber } = args;
 
     // Determine user role

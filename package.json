@@ -18,6 +18,7 @@
     "express": "^4.21.2",
     "graphql": "^16.9.0",
     "graphql-http": "^1.22.3",
-    "jsonwebtoken": "^9.0.2"
+    "jsonwebtoken": "^9.0.2",
+    "validate": "^5.2.0"
   }
 }

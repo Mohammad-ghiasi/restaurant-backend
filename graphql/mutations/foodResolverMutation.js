@@ -17,7 +17,7 @@ const foodResolverMutation = {
     categoryId: { type: new GraphQLNonNull(GraphQLID) },
     inventory: { type: new GraphQLNonNull(GraphQLInt) },
   },
-  resolve: async (_, args) => {
+  resolve: async (_, args, context) => {
     const { role } = validateToken(context.req);
     if (role !== 'admin') {
       throw new Error("No access !")
