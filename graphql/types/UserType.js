@@ -1,14 +1,16 @@
-const { GraphQLObjectType, GraphQLID, GraphQLString } = require("graphql");
+exports.UserType = `
+type UserType {
+  id: ID
+  username: String
+  phonenumber: String
+  password: String
+  role: String
+}
+`;
 
-const UserType = new GraphQLObjectType({
-  name: "UserType",
-  fields: {
-    id: { type: GraphQLID },
-    username: { type: GraphQLString },
-    phonenumber: { type: GraphQLString },
-    password: { type: GraphQLString },
-    role: { type: GraphQLString },
-  },
-});
-
-module.exports = UserType;
+exports.AuthType = `
+type AuthType {
+  token: String
+  user: UserType
+}
+`;
