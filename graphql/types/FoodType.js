@@ -1,4 +1,5 @@
 const { GraphQLObjectType, GraphQLID, GraphQLString, GraphQLInt } = require("graphql");
+const CategoryType = require("./CategoryType"); // Lazy import to avoid circular dependency
 
 const FoodType = new GraphQLObjectType({
   name: "FoodType",

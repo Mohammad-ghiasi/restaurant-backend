@@ -1,32 +1,45 @@
 require("dotenv").config();
 const express = require("express");
-const { createHandler } = require("graphql-http/lib/use/express");
+const { ApolloServer } = require("apollo-server-express");
+const cors = require("cors");
 const sqlConnection = require("./db/dbconnection");
-const Category = require("./models/CategoryModel");
-const Food = require("./models/FoodModel");
-const User = require("./models/UserModel");
-const Order = require("./models/OrderModel");
-const Address = require("./models/AddressModel");
-const schema = require("./graphql/index.resolver")
-
+const schema = require("./graphql/indexSchema");
+const resolvers = require("./graphql/indexResolvers");
 
 const app = express();
 
-app.use("/graphql", createHandler({ schema, context: (req) => ({ req }) }));
+// Apply CORS middleware with specific configuration
+// app.use(
+//   cors({
+//     origin: "http://localhost:3001", // Replace with your frontend URL
+//     credentials: true, // Allow credentials such as cookies or authorization headers
+//   })
+// );
 
-// try to connect to DB
+// Try to connect to DB
 try {
   sqlConnection.authenticate();
   sqlConnection.sync({ alter: true });
-  // sqlConnection.sync({ force: true }) // این دستور مدل‌ها را با تنظیم `force: true` دوباره می‌سازد که می‌تواند کمک کننده باشد.
-
-  console.log("Conected successfuly");
+  console.log("Connected successfully to the database.");
 } catch (error) {
-  console.log("faild to conect", error);
+  console.error("Failed to connect to the database:", error);
 }
 
+const startServer = async () => {
+  // console.log(schema); // بررسی کنید که TypeDefs چه مقدار خروجی می‌دهد.
+  const server = new ApolloServer({
+    typeDefs: schema,
+    resolvers,
+    context: ({ req }) => ({ req }),
+  });
+
+  await server.start();
+  server.applyMiddleware({ app });
+};
+
+startServer();
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
-  console.log(`server is runing on http://localhost:${port}`);
+  console.log(`Server is running on http://localhost:${port}`);
 });

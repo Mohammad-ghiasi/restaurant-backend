@@ -11,9 +11,12 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@apollo/server": "^4.11.2",
     "@sequelize/core": "^7.0.0-alpha.43",
     "@sequelize/mysql": "^7.0.0-alpha.43",
+    "apollo-server-express": "^3.13.0",
     "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "graphql": "^16.9.0",

@@ -12,10 +12,10 @@ const validateToken = (req) => {
 
       return payloadToken;
     } else {
-      throw new Error("Not auth !");
+      throw new Error("Not auth 111 !");
     }
   } else {
-    throw new Error("Not auth !");
+    throw new Error("Not auth333 !");
   }
 };
 
