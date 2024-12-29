@@ -1,7 +1,8 @@
 {
   "name": "back-end",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "server3.js",
+    "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon"
@@ -12,16 +13,23 @@
   "description": "",
   "dependencies": {
     "@apollo/server": "^4.11.2",
+    "@graphql-tools/schema": "^10.0.14",
     "@sequelize/core": "^7.0.0-alpha.43",
     "@sequelize/mysql": "^7.0.0-alpha.43",
     "apollo-server-express": "^3.13.0",
     "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
-    "graphql": "^16.9.0",
+    "graphql": "^16.10.0",
     "graphql-http": "^1.22.3",
+    "graphql-subscriptions": "^3.0.0",
+    "graphql-tag": "^2.12.6",
+    "graphql-upload": "^17.0.0",
+    "graphql-ws": "^5.16.0",
     "jsonwebtoken": "^9.0.2",
-    "validate": "^5.2.0"
+    "validate": "^5.2.0",
+    "ws": "^8.18.0"
   }
 }

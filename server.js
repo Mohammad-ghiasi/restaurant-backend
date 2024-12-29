@@ -11,12 +11,12 @@ const app = express();
 // Apply CORS middleware with specific configuration
 // app.use(
 //   cors({
-//     origin: "http://localhost:3001", // Replace with your frontend URL
-//     credentials: true, // Allow credentials such as cookies or authorization headers
+//     origin: "http://localhost:3001"
+//     credentials: true
 //   })
 // );
 
-// Try to connect to DB
+// Try for connect to DB
 try {
   sqlConnection.authenticate();
   sqlConnection.sync({ alter: true });
@@ -26,7 +26,6 @@ try {
 }
 
 const startServer = async () => {
-  // console.log(schema); // بررسی کنید که TypeDefs چه مقدار خروجی می‌دهد.
   const server = new ApolloServer({
     typeDefs: schema,
     resolvers,
